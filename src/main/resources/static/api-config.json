@@ -1,0 +1,11 @@
+{
+  "apiPackage": "com.kaiqkt.{{projectPackage}}.generated.application.controllers",
+  "modelPackage": "com.kaiqkt.{{projectPackage}}.generated.application.dto",
+  "dateLibrary": "java8",
+  "additionalProperties": {
+    "hideGenerationTimestamp": true,
+    "useBeanValidation": true,
+    "interfaceOnly": true,
+    "enumPropertyNaming" : "UPPERCASE"
+  }
+}

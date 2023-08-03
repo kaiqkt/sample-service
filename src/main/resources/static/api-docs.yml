@@ -1,0 +1,42 @@
+openapi: 3.0.0
+info:
+  title: "{{projectName}}"
+  version: 1.0.0
+  description: >-
+    Business management service.
+  license:
+    name: Apache-2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+paths:
+  /hello-world:
+    get:
+      tags:
+        - get
+      description: Sample
+      operationId: get
+      responses:
+        200:
+          description: Sample
+          content:
+            application/vnd.kaiqkt_hello_world_v1+json:
+              schema:
+                $ref: '#/components/schemas/GetSampleV1'
+
+components:
+  schemas:
+    GetSampleV1:
+      type: object
+      properties:
+        name:
+          hello: world
+      required:
+        - hello
+
+  securitySchemes:
+    CustomerAuth:
+      type: http
+      scheme: bearer
+    ServiceAuth:
+      type: apiKey
+      name: Authorization
+      in: header

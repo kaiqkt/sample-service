@@ -1,0 +1,17 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: {{projectName}}
+
+service-shared-secret: world
+customer-auth-signing-secret: world
+
+ignore-post-paths: /hello
+ignore-get-paths: /hello
+
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    url: /api-docs.yml
