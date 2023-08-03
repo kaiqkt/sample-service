@@ -67,7 +67,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     //commons
-    implementation("com.kaiqkt:commons-spring:$commonsVersion")
+    implementation("com.kaiqkt:commons-spring-security:$commonsVersion")
+    implementation("com.kaiqkt:commons-spring-health-checker:$commonsVersion")
 
     //swagger
     implementation("org.springdoc:springdoc-openapi-ui:1.6.14")
@@ -76,10 +77,6 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-security")
-
-    //logging
-    implementation("org.slf4j:slf4j-api")
-    implementation("org.slf4j:slf4j-simple")
 
     //fuel
     implementation("com.github.kittinunf.fuel:fuel:2.3.1")
