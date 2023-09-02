@@ -41,7 +41,7 @@ plugins {
     application
     kotlin("jvm") version "1.7.10"
     kotlin("plugin.spring") version "1.6.21"
-    id("org.springframework.boot") version "2.7.1"
+    id("org.springframework.boot") version "2.7.12"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     id("io.gitlab.arturbosch.detekt") version "1.19.0"
     id("org.openapi.generator") version "5.1.1"
@@ -83,7 +83,6 @@ dependencies {
 
     //utils
     implementation("io.azam.ulidj:ulidj:1.0.1")
-    implementation("com.github.ua-parser:uap-java:1.5.3")
 
     //jackson
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
