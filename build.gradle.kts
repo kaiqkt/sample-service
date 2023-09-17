@@ -53,13 +53,23 @@ sourceSets {
         compileClasspath += sourceSets.main.get().output
         runtimeClasspath += sourceSets.main.get().output
     }
+
+    create("archTest") {
+        compileClasspath += sourceSets.main.get().output
+        runtimeClasspath += sourceSets.main.get().output
+    }
 }
 
 val componentTestImplementation: Configuration by configurations.getting {
     extendsFrom(configurations.implementation.get())
 }
 
+val archTestImplementation: Configuration by configurations.getting {
+    extendsFrom(configurations.implementation.get())
+}
+
 configurations["componentTestRuntimeOnly"].extendsFrom(configurations.runtimeOnly.get())
+configurations["archTestRuntimeOnly"].extendsFrom(configurations.runtimeOnly.get())
 
 dependencies {
     //kotlin
@@ -95,6 +105,10 @@ dependencies {
     componentTestImplementation("org.mock-server:mockserver-netty:5.11.2")
     componentTestImplementation("org.springframework.boot:spring-boot-starter-test")
     componentTestImplementation(sourceSets["test"].output)
+
+    archTestImplementation("org.springframework.boot:spring-boot-starter-test")
+    archTestImplementation("com.tngtech.archunit:archunit-junit5-api:1.1.0")
+    archTestImplementation("com.tngtech.archunit:archunit-junit5-engine:1.1.0")
 }
 
 application {
@@ -163,6 +177,17 @@ val componentTestTask = tasks.create("componentTest", Test::class) {
     useJUnitPlatform()
 }
 
+val archTestTask = tasks.create("archTest", Test::class) {
+    description = "Run the architeture tests."
+    group = "verification"
+
+    testClassesDirs = sourceSets["archTest"].output.classesDirs
+    classpath = sourceSets["archTest"].runtimeClasspath
+
+    useJUnitPlatform()
+}
+
+
 tasks.withType<JacocoReport> {
     reports {
         xml.required
@@ -189,9 +214,9 @@ tasks.withType<JacocoCoverageVerification> {
 }
 
 tasks.test {
-    finalizedBy(tasks.jacocoTestReport, tasks.jacocoTestCoverageVerification)
+    finalizedBy(archTestTask, tasks.jacocoTestReport, tasks.jacocoTestCoverageVerification)
 }
 
 tasks.build {
-    finalizedBy(tasks.jacocoTestReport, tasks.jacocoTestCoverageVerification, componentTestTask)
+    dependsOn(tasks.test, componentTestTask)
 }
