@@ -218,5 +218,5 @@ tasks.test {
 }
 
 tasks.build {
-    dependsOn(tasks.test, componentTestTask)
+    finalizedBy(tasks.test, componentTestTask)
 }
