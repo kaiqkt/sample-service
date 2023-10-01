@@ -218,5 +218,5 @@ tasks.test {
 }
 
 tasks.build {
-    finalizedBy(tasks.test, componentTestTask)
+    finalizedBy(componentTestTask)
 }
