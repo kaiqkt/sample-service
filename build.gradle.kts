@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 val mainPkgAndClass = "com.kaiqkt.{{projectPackage}}.ApplicationKt"
-val commonsVersion = "1.2.0"
+val commonsVersion = "1.4.5"
 
 val excludePackages: List<String> by extra {
     listOf(
