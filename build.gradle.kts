@@ -214,9 +214,5 @@ tasks.withType<JacocoCoverageVerification> {
 }
 
 tasks.test {
-    finalizedBy(archTestTask, tasks.jacocoTestReport, tasks.jacocoTestCoverageVerification)
-}
-
-tasks.build {
-    finalizedBy(componentTestTask)
+    finalizedBy(tasks.jacocoTestReport, tasks.jacocoTestCoverageVerification, componentTestTask, archTestTask)
 }
